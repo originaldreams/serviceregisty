@@ -43,13 +43,13 @@ public class HttpTestController {
         ResponseEntity<String> responseEntity;
         if(id == null || name == null){ //不带参数的get请求
             responseEntity = restTemplate.getForEntity(
-                    "http://LogCenter/http/get",String.class);
+                    OriginalDreamsServiceName.LogCenter_Http_Get,String.class);
         } else{ //带参数的get请求
             Map<String ,Object> map = new HashMap<>();
             map.put("id",id);
             map.put("name",name);
             responseEntity = restTemplate.getForEntity(
-                     OriginalDreamsServiceName.LogCenter_Http_Get + "?id={id}&name={name}",String.class,map);
+                    OriginalDreamsServiceName.LogCenter_Http_Get + "?id={id}&name={name}",String.class,map);
         }
         String body = responseEntity.getBody();
         HttpStatus statusCode = responseEntity.getStatusCode();
