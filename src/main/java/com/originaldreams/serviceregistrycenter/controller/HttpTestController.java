@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -29,13 +30,22 @@ public class HttpTestController {
     @Autowired
     RestTemplate restTemplate;
 
+    @Autowired
+    private HttpServletRequest request; //自动注入request
     private Logger logger = LoggerFactory.getLogger(HttpTestController.class);
 
-    @RequestMapping(value = "/get",method = RequestMethod.GET)
-    public ResponseEntity get(Integer id,String name){
+    @RequestMapping(value = "/get1",method = RequestMethod.GET)
+    public ResponseEntity get1(Integer id,String name){
+        request.getSession().setAttribute("id","1234567");
         Map<String,Object> result = new HashMap<>();
         result.put("id",id);
         result.put("name",name);
+        return  ResponseEntity.ok().contentType(MediaType.APPLICATION_JSON).body(result);
+    }
+    @RequestMapping(value = "/get2",method = RequestMethod.GET)
+    public ResponseEntity get2(Integer id,String name){
+        String result = (String)request.getSession().getAttribute("id");
+
         return  ResponseEntity.ok().contentType(MediaType.APPLICATION_JSON).body(result);
     }
     @RequestMapping(value = "/testGetToLogCenter" ,method = RequestMethod.GET)
