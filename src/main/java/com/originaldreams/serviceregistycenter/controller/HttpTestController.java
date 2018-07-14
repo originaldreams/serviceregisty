@@ -1,7 +1,7 @@
-package com.originaldreams.serviceregistrycenter.controller;
+package com.originaldreams.serviceregistycenter.controller;
 
-import com.originaldreams.serviceregistrycenter.common.MyServiceRouter;
-import com.originaldreams.serviceregistrycenter.entity.User;
+import com.originaldreams.serviceregistycenter.common.MyServiceRouter;
+import com.originaldreams.serviceregistycenter.entity.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

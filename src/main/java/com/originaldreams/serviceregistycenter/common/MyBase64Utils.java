@@ -1,4 +1,4 @@
-package com.originaldreams.serviceregistrycenter.common;
+package com.originaldreams.serviceregistycenter.common;
 
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;

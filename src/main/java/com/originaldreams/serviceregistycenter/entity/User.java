@@ -1,4 +1,4 @@
-package com.originaldreams.serviceregistrycenter.entity;
+package com.originaldreams.serviceregistycenter.entity;
 
 import java.util.Date;
 

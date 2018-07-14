@@ -1,4 +1,4 @@
-package com.originaldreams.serviceregistrycenter.common;
+package com.originaldreams.serviceregistycenter.common;
 
 /**
  * 维护组件间相互调用的接口

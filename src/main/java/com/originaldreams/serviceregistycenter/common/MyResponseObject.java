@@ -1,4 +1,4 @@
-package com.originaldreams.serviceregistrycenter.common;
+package com.originaldreams.serviceregistycenter.common;
 
 /**
  * 规定统一的消息返回格式
