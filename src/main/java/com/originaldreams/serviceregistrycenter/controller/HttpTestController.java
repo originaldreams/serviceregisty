@@ -1,6 +1,6 @@
 package com.originaldreams.serviceregistrycenter.controller;
 
-import com.originaldreams.serviceregistrycenter.common.MyServiceName;
+import com.originaldreams.serviceregistrycenter.common.MyServiceRouter;
 import com.originaldreams.serviceregistrycenter.entity.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -53,13 +53,16 @@ public class HttpTestController {
         ResponseEntity<String> responseEntity;
         if(id == null || name == null){ //不带参数的get请求
             responseEntity = restTemplate.getForEntity(
-                    MyServiceName.LogCenter_Http_Get,String.class);
+                    MyServiceRouter.LogCenter_Http_Get,String.class);
         } else{ //带参数的get请求
-            Map<String ,Object> map = new HashMap<>();
-            map.put("id",id);
-            map.put("name",name);
+//            Map<String ,Object> map = new HashMap<>();
+//            map.put("id",id);
+//            map.put("name",name);
+//            responseEntity = restTemplate.getForEntity(
+//                    MyServiceName.LogCenter_Http_Get + "?id={id}&name={name}",String.class,map);
+
             responseEntity = restTemplate.getForEntity(
-                    MyServiceName.LogCenter_Http_Get + "?id={id}&name={name}",String.class,map);
+                    MyServiceRouter.LogCenter_Http_Get + "?id=" + id +"&name=" + name ,String.class);
         }
         String body = responseEntity.getBody();
         HttpStatus statusCode = responseEntity.getStatusCode();
@@ -80,13 +83,15 @@ public class HttpTestController {
         try{
             if(id == null || name == null){ //不带参数的post请求
                 responseEntity = restTemplate.postForEntity(
-                        MyServiceName.LogCenter_Http_Post,null,String.class);
+                        MyServiceRouter.LogCenter_Http_Post,null,String.class);
             } else{ //带map参数的post请求
-                Map<String ,Object> map = new HashMap<>();
-                map.put("id",id);
-                map.put("name",name);
+//                Map<String ,Object> map = new HashMap<>();
+//                map.put("id",id);
+//                map.put("name",name);
+//                responseEntity = restTemplate.postForEntity(
+//                             MyServiceName.LogCenter_Http_Post + "?id={id}&name={name}",null,String.class,map);
                 responseEntity = restTemplate.postForEntity(
-                             MyServiceName.LogCenter_Http_Post + "?id={id}&name={name}",null,String.class,map);
+                        MyServiceRouter.LogCenter_Http_Post +  "?id=" + id +"&name=" + name,null,String.class);
             }
             String body = responseEntity.getBody().toString();
             HttpStatus statusCode = responseEntity.getStatusCode();
