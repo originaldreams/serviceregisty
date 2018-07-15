@@ -5,22 +5,26 @@ import java.util.List;
 
 public class Router {
      private Integer id;
-     private String ServiceName;
-     private String ControllerName;
-     private String MethodName;
-     private String RouterUrl;
-     private Long FirstMask;
-     private Long SecondMask;
+     private String serviceName;
+     private String controllerName;
+     private String methodName;
+     private String routerUrl;
+     private Long firstMask;
+     private Long secondMask;
 
-    public Router(Integer id, String methodName, String routerUrl, Long firstMask, Long secondMask) {
+    public Router(Integer id, String methodName, String routerUrl, Long firstMask, Long secondMask){
         this.id = id;
-        MethodName = methodName;
-        RouterUrl = routerUrl;
-        FirstMask = firstMask;
-        SecondMask = secondMask;
+        this.methodName = methodName;
+        this.routerUrl = routerUrl;
+        this.firstMask = firstMask;
+        this.secondMask = secondMask;
+        /*
+        这里可能产生数组越界抛异常，当抛异常时，说明methodName不合法，需要修改
+         */
         String[] array = methodName.split("_");
-        this.ServiceName = array[0];
-        this.ControllerName = array[1];
+        this.serviceName = array[0];
+        this.controllerName = array[1];
+
     }
 
     public Integer getId(){
@@ -30,47 +34,47 @@ public class Router {
            this.id = id;
      }
      public String getServiceName(){
-           return this.ServiceName;
+           return this.serviceName;
      }
-     public void setServiceName(String ServiceName){
-           this.ServiceName = ServiceName;
+     public void setServiceName(String serviceName){
+           this.serviceName = serviceName;
      }
      public String getControllerName(){
-           return this.ControllerName;
+           return this.controllerName;
      }
-     public void setControllerName(String ControllerName){
-           this.ControllerName = ControllerName;
+     public void setControllerName(String controllerName){
+           this.controllerName = controllerName;
      }
      public String getMethodName(){
-           return this.MethodName;
+           return this.methodName;
      }
-     public void setMethodName(String MethodName){
-           this.MethodName = MethodName;
+     public void setMethodName(String methodName){
+           this.methodName = methodName;
      }
      public String getRouterUrl(){
-           return this.RouterUrl;
+           return this.routerUrl;
      }
-     public void setRouterUrl(String RouterUrl){
-           this.RouterUrl = RouterUrl;
+     public void setRouterUrl(String routerUrl){
+           this.routerUrl = routerUrl;
      }
      public Long getFirstMask(){
-           return this.FirstMask;
+           return this.firstMask;
      }
-     public void setFirstMask(Long FirstMask){
-           this.FirstMask = FirstMask;
+     public void setFirstMask(Long firstMask){
+           this.firstMask = firstMask;
      }
      public Long getSecondMask(){
-           return this.SecondMask;
+           return this.secondMask;
      }
-     public void setSecondMask(Long SecondMask){
-           this.SecondMask = SecondMask;
+     public void setSecondMask(Long secondMask){
+           this.secondMask = secondMask;
      }
 
 
 @Override
     public String toString() {
         return "Router{" +
-            "  id:" + id + "  ServiceName:" + ServiceName + "  ControllerName:" + ControllerName + "  MethodName:" + MethodName + "  RouterUrl:" + RouterUrl + "  FirstMask:" + FirstMask + "  SecondMask:" + SecondMask + 
+            "  id:" + id + "  serviceName:" + serviceName + "  controllerName:" + controllerName + "  methodName:" + methodName + "  routerUrl:" + routerUrl + "  firstMask:" + firstMask + "  secondMask:" + secondMask + 
         "}";
     }
   }

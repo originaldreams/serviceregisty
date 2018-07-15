@@ -11,7 +11,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.nio.charset.Charset;
 
-@EnableDiscoveryClient
+//@EnableDiscoveryClient
 @EnableEurekaServer
 @SpringBootApplication
 public class ServiceregistycenterApplication {
@@ -28,6 +28,8 @@ public class ServiceregistycenterApplication {
         return restTemplate;
 
     }
+
+
     public static void main(String[] args) {
         SpringApplication.run(ServiceregistycenterApplication.class, args);
     }

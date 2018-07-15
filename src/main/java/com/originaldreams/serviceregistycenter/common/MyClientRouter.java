@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 维护组件为客户端提供的接口
+ * 维护组件为客户端提供的接口，这些接口会自动读取到my_core库的router表中
  * 当一个接口同时可以提供给Server和Client使用时，只在MyServiceName里注册一下，同时加入到MyClientRouter里的routerMap里即可
  * 当一个接口只提供给Client使用时，直接在MyClientName里注册，同时加入到MyClientRouter里的routerMap里
  */
@@ -28,9 +28,13 @@ public class MyClientRouter {
     private final static long byte9th       = 1 << 8;//第9位
     private final static long byte10th      = 1 << 9;//第10位
 
+    /**
+     * 初始化routerMap
+     * 这个在添加新的router时要仔细检查，服务启动时会根据routerMap来初始化路由表
+     */
     static{
         routerMap.put("LogCenter_Http_Get",new Router(1,"LogCenter_Http_Get",MyServiceRouter.LogCenter_Http_Get,byte1th,byte1th));
-        routerMap.put("LogCenter_Http_Post",new Router(2,"LogCenter_Http_Get",MyServiceRouter.LogCenter_Http_Post,byte1th,byte2th));
+        routerMap.put("LogCenter_Http_Post",new Router(2,"LogCenter_Http_Post",MyServiceRouter.LogCenter_Http_Post,byte1th,byte2th));
     }
 
 }
