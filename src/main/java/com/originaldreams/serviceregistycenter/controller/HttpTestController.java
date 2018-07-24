@@ -1,6 +1,6 @@
 package com.originaldreams.serviceregistycenter.controller;
 
-import com.originaldreams.serviceregistycenter.common.MyServiceRouter;
+import com.originaldreams.common.MyServiceRouter;
 import com.originaldreams.serviceregistycenter.entity.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
