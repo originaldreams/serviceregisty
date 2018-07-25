@@ -1,6 +1,6 @@
 package com.originaldreams.serviceregistycenter.controller;
 
-import com.originaldreams.common.MyServiceRouter;
+import com.originaldreams.common.router.MyRouter;
 import com.originaldreams.serviceregistycenter.entity.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -53,7 +53,7 @@ public class HttpTestController {
         ResponseEntity<String> responseEntity;
         if(id == null || name == null){ //不带参数的get请求
             responseEntity = restTemplate.getForEntity(
-                    MyServiceRouter.LogCenter_Http_Get,String.class);
+                    MyRouter.Log_Http_Get,String.class);
         } else{ //带参数的get请求
 //            Map<String ,Object> map = new HashMap<>();
 //            map.put("id",id);
@@ -62,7 +62,7 @@ public class HttpTestController {
 //                    MyServiceName.LogCenter_Http_Get + "?id={id}&name={name}",String.class,map);
 
             responseEntity = restTemplate.getForEntity(
-                    MyServiceRouter.LogCenter_Http_Get + "?id=" + id +"&name=" + name ,String.class);
+                    MyRouter.Log_Http_Get + "?id=" + id +"&name=" + name ,String.class);
         }
         String body = responseEntity.getBody();
         HttpStatus statusCode = responseEntity.getStatusCode();
@@ -83,7 +83,7 @@ public class HttpTestController {
         try{
             if(id == null || name == null){ //不带参数的post请求
                 responseEntity = restTemplate.postForEntity(
-                        MyServiceRouter.LogCenter_Http_Post,null,String.class);
+                        MyRouter.Log_Http_Post,null,String.class);
             } else{ //带map参数的post请求
 //                Map<String ,Object> map = new HashMap<>();
 //                map.put("id",id);
@@ -91,7 +91,7 @@ public class HttpTestController {
 //                responseEntity = restTemplate.postForEntity(
 //                             MyServiceName.LogCenter_Http_Post + "?id={id}&name={name}",null,String.class,map);
                 responseEntity = restTemplate.postForEntity(
-                        MyServiceRouter.LogCenter_Http_Post +  "?id=" + id +"&name=" + name,null,String.class);
+                        MyRouter.Log_Http_Post +  "?id=" + id +"&name=" + name,null,String.class);
             }
             String body = responseEntity.getBody().toString();
             HttpStatus statusCode = responseEntity.getStatusCode();
