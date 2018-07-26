@@ -1,4 +1,4 @@
-package com.originaldreams.serviceregistrycenter;
+package com.originaldreams.serviceregistycenter;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,10 +11,10 @@ import org.springframework.web.client.RestTemplate;
 
 import java.nio.charset.Charset;
 
-@EnableDiscoveryClient
+//@EnableDiscoveryClient
 @EnableEurekaServer
 @SpringBootApplication
-public class ServiceregistrycenterApplication {
+public class ServiceregistycenterApplication {
     @Bean
     @LoadBalanced
     /**
@@ -28,7 +28,9 @@ public class ServiceregistrycenterApplication {
         return restTemplate;
 
     }
+
+
     public static void main(String[] args) {
-        SpringApplication.run(ServiceregistrycenterApplication.class, args);
+        SpringApplication.run(ServiceregistycenterApplication.class, args);
     }
 }

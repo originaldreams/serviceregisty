@@ -1,7 +1,7 @@
-package com.originaldreams.serviceregistrycenter.controller;
+package com.originaldreams.serviceregistycenter.controller;
 
-import com.originaldreams.serviceregistrycenter.common.OriginalDreamsServiceName;
-import com.originaldreams.serviceregistrycenter.entity.User;
+import com.originaldreams.common.router.MyRouter;
+import com.originaldreams.serviceregistycenter.entity.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -29,13 +30,22 @@ public class HttpTestController {
     @Autowired
     RestTemplate restTemplate;
 
+    @Autowired
+    private HttpServletRequest request; //自动注入request
     private Logger logger = LoggerFactory.getLogger(HttpTestController.class);
 
-    @RequestMapping(value = "/get",method = RequestMethod.GET)
-    public ResponseEntity get(Integer id,String name){
+    @RequestMapping(value = "/get1",method = RequestMethod.GET)
+    public ResponseEntity get1(Integer id,String name){
+        request.getSession().setAttribute("id","1234567");
         Map<String,Object> result = new HashMap<>();
         result.put("id",id);
         result.put("name",name);
+        return  ResponseEntity.ok().contentType(MediaType.APPLICATION_JSON).body(result);
+    }
+    @RequestMapping(value = "/get2",method = RequestMethod.GET)
+    public ResponseEntity get2(Integer id,String name){
+        String result = (String)request.getSession().getAttribute("id");
+
         return  ResponseEntity.ok().contentType(MediaType.APPLICATION_JSON).body(result);
     }
     @RequestMapping(value = "/testGetToLogCenter" ,method = RequestMethod.GET)
@@ -43,13 +53,16 @@ public class HttpTestController {
         ResponseEntity<String> responseEntity;
         if(id == null || name == null){ //不带参数的get请求
             responseEntity = restTemplate.getForEntity(
-                    OriginalDreamsServiceName.LogCenter_Http_Get,String.class);
+                    MyRouter.Log_Http_Get,String.class);
         } else{ //带参数的get请求
-            Map<String ,Object> map = new HashMap<>();
-            map.put("id",id);
-            map.put("name",name);
+//            Map<String ,Object> map = new HashMap<>();
+//            map.put("id",id);
+//            map.put("name",name);
+//            responseEntity = restTemplate.getForEntity(
+//                    MyServiceName.LogCenter_Http_Get + "?id={id}&name={name}",String.class,map);
+
             responseEntity = restTemplate.getForEntity(
-                    OriginalDreamsServiceName.LogCenter_Http_Get + "?id={id}&name={name}",String.class,map);
+                    MyRouter.Log_Http_Get + "?id=" + id +"&name=" + name ,String.class);
         }
         String body = responseEntity.getBody();
         HttpStatus statusCode = responseEntity.getStatusCode();
@@ -70,13 +83,15 @@ public class HttpTestController {
         try{
             if(id == null || name == null){ //不带参数的post请求
                 responseEntity = restTemplate.postForEntity(
-                        OriginalDreamsServiceName.LogCenter_Http_Post,null,String.class);
+                        MyRouter.Log_Http_Post,null,String.class);
             } else{ //带map参数的post请求
-                Map<String ,Object> map = new HashMap<>();
-                map.put("id",id);
-                map.put("name",name);
+//                Map<String ,Object> map = new HashMap<>();
+//                map.put("id",id);
+//                map.put("name",name);
+//                responseEntity = restTemplate.postForEntity(
+//                             MyServiceName.LogCenter_Http_Post + "?id={id}&name={name}",null,String.class,map);
                 responseEntity = restTemplate.postForEntity(
-                             OriginalDreamsServiceName.LogCenter_Http_Post + "?id={id}&name={name}",null,String.class,map);
+                        MyRouter.Log_Http_Post +  "?id=" + id +"&name=" + name,null,String.class);
             }
             String body = responseEntity.getBody().toString();
             HttpStatus statusCode = responseEntity.getStatusCode();
