@@ -129,3 +129,48 @@ data|int|用户ID
     "data": 8
 }
 ```
+##用户基本信息管理
+### 2.1 查询用户基本信息
++ 接口名称：查询用户基本信息
++ 接口地址：/user?methodName=UserManager_UserInfo_Get
++ 请求方式：GET
++ 请求
+
+参数名称|类型|说明|可否为空
+:---:|:---:|:---:|:---:
+methodName|String|固定为：UserManager_UserInfo_Get|notNull
+
++ 应答
+
+参数|类型|说明
+:---:|:---:|:---:
+id|int|用户ID|用户ID
+nickName|String|昵称
+birthday|Date|生日
+gender|String|性别 0:男 1:女
+address|String|地址
+signature|String|签名
+userPortrait|String|头像Url
+email|String|邮箱
+phone|String|手机号
+createTime|Date|创建时间
+mask|int|掩码值
+
++ 示例
+```json
+{
+    "data": {
+        "id": 10,
+        "nickName": null,
+        "birthday": null,
+        "gender": 0,
+        "address": null,
+        "signature": null,
+        "userPortrait": null,
+        "email": "mamian@com",
+        "phone": "18911927890",
+        "createTime": "2018-07-27T07:13:29.000+0000",
+        "mask": null
+    }
+}
+```
