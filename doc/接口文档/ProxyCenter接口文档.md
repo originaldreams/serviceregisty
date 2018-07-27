@@ -23,11 +23,13 @@
 }
 ```
 + 接口参数说明
+
 参数名称|类型|说明
---|--|--
+:---:|:---:|:---:
 success|int|业务执行状态 0:成功;1:失败
 data|Object|业务执行结果 参照具体应答的参数说明
 message|String|业务执行失败时的错误信息
+
 + 注意
 	1.本接口文档的所有接口均为Http请求格式，在使用接口时，应当先判断http返回码
 	3.仅当http返回码为200且success=0时，说明业务处理成功。此时应关注data字段返回的业务数据
@@ -38,14 +40,18 @@ message|String|业务执行失败时的错误信息
 + 接口地址：/logonWithUserName
 + 请求方式：POST
 + 请求
+
 参数名称|类型|说明|可否为空
---|--|--|--
+:---:|:---:|:---:|:---:
 username|String|用户名|notNull
 password|String|用户密码|notNull
+
 + 应答
+
 参数|类型|说明
---|--|--
+:---:|:---:|:---:
 data|int|用户ID
+
 + 示例
 ```json
 {
@@ -57,14 +63,18 @@ data|int|用户ID
 + 接口地址：/logonWithPhone
 + 请求方式：POST
 + 请求
+
 参数名称|类型|说明|可否为空
---|--|--|--
+:---:|:---:|:---:|:---:
 phone|String|手机号|notNull
 password|String|用户密码|notNull
+
 + 应答
+
 参数|类型|说明
---|--|--
+:---:|:---:|:---:
 data|int|用户ID
+
 + 示例
 ```json
 {
@@ -76,14 +86,18 @@ data|int|用户ID
 + 接口地址：/logonWithEmail
 + 请求方式：POST
 + 请求
+
 参数名称|类型|说明|可否为空
---|--|--|--
+:---:|:---:|:---:|:---:
 email|String|邮箱|notNull
 password|String|用户密码|notNull
+
 + 应答
+
 参数|类型|说明
---|--|--
+:---:|:---:|:---:
 data|int|用户ID
+
 + 示例
 ```json
 {
