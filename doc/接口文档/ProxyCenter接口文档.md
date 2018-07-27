@@ -34,7 +34,7 @@ message|String|业务执行失败时的错误信息
 	1.本接口文档的所有接口均为Http请求格式，在使用接口时，应当先判断http返回码
 	3.仅当http返回码为200且success=0时，说明业务处理成功。此时应关注data字段返回的业务数据
 	4.当http返回码为其他，或http返回码200但success=1时，说明业务处理失败。此时应关注message字段给出的错误提示
-##1.登录
+##1.登录注册
 ### 1.1 用户名登录
 + 接口名称：用户名登录
 + 接口地址：/logonWithUserName
@@ -55,7 +55,7 @@ data|int|用户ID
 + 示例
 ```json
 {
-    "data": 6,
+    "data": 6
 }
 ```
 ### 1.2 手机号登录
@@ -78,7 +78,7 @@ data|int|用户ID
 + 示例
 ```json
 {
-    "data": 6,
+    "data": 6
 }
 ```
 ### 1.3 邮箱登录
@@ -101,6 +101,31 @@ data|int|用户ID
 + 示例
 ```json
 {
-    "data": 6,
+    "data": 6
+}
+```
+### 1.4 注册
++ 接口名称：邮箱登录
++ 接口地址：/register
++ 请求方式：POST
++ 请求(userName/phone/email不可同时为空)
+
+参数名称|类型|说明|可否为空
+:---:|:---:|:---:|:---:
+userName|String|用户名|null
+phone|String|手机号|null
+email|String|邮箱|null
+password|String|用户密码|notNull
+
++ 应答
+
+参数|类型|说明
+:---:|:---:|:---:
+data|int|用户ID
+
++ 示例
+```json
+{
+    "data": 8
 }
 ```
