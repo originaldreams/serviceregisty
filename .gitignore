@@ -1,7 +1,8 @@
 /target/
 out
-
 ### IntelliJ IDEA ###
 .idea
 .mvn
 *.iml
+
+/src/main/resources/application-prod.properties
