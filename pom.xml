@@ -5,7 +5,7 @@
 
     <groupId>com.originaldreams</groupId>
     <artifactId>serviceregistycenter</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <packaging>jar</packaging>
 
     <name>serviceregistycenter</name>
@@ -71,6 +71,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
+        <finalName>serviceregisty</finalName>
     </build>
 
 
